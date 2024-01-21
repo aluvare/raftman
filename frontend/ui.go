@@ -21,6 +21,10 @@ func newUIFrontend(e spi.LogEngine, frontendURL *url.URL) (*uiFrontend, error) {
 	return &f, nil
 }
 
+func Dir(useLocal bool, basePath string) http.FileSystem {
+	return http.Dir(basePath)
+}
+
 func (f *uiFrontend) Start() error {
 	_, b := f.e.GetBackend()
 	f.api.b = b
